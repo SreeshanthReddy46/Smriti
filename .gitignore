@@ -1,0 +1,17 @@
+# Python virtual env and cache
+backend/.venv/
+**/__pycache__/
+*.pyc
+
+# Local Databases
+backend/smriti.db
+backend/smriti_qdrant.db
+backend/file_tree.json
+
+# Node dependencies and build folders
+frontend/node_modules/
+frontend/dist/
+
+# OS files
+.DS_Store
+Thumbs.db

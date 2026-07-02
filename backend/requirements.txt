@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+qdrant-client
+sentence-transformers
+GitPython
+pydantic
+pytest
+requests
+sqlite3-to-mysql;python_version<"0" # Not needed, just an example. We will use standard sqlite3 library which is built into Python.
