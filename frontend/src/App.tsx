@@ -10,8 +10,12 @@ import {
   Search, 
   Settings as SettingsIcon,
   RefreshCw,
-  FolderOpen
+  FolderOpen,
+  Menu,
+  X
 } from 'lucide-react';
+
+import FlowingMenu from './components/FlowingMenu';
 
 import { api } from './utils/api';
 import DashboardHome from './components/DashboardHome';
@@ -26,8 +30,21 @@ import Settings from './components/Settings';
 
 type Tab = 'dashboard' | 'repo' | 'memory' | 'git' | 'decisions' | 'features' | 'bugs' | 'search' | 'settings';
 
+const flowingMenuItems = [
+  { id: 'dashboard', link: '#', text: 'Dashboard', image: 'https://picsum.photos/600/400?random=1' },
+  { id: 'repo', link: '#', text: 'Repo Analyzer', image: 'https://picsum.photos/600/400?random=2' },
+  { id: 'memory', link: '#', text: 'Memory Engine', image: 'https://picsum.photos/600/400?random=3' },
+  { id: 'git', link: '#', text: 'Git Intelligence', image: 'https://picsum.photos/600/400?random=4' },
+  { id: 'decisions', link: '#', text: 'Decisions Log', image: 'https://picsum.photos/600/400?random=5' },
+  { id: 'features', link: '#', text: 'Feature Tracker', image: 'https://picsum.photos/600/400?random=6' },
+  { id: 'bugs', link: '#', text: 'Bug Intelligence', image: 'https://picsum.photos/600/400?random=7' },
+  { id: 'search', link: '#', text: 'Semantic Search', image: 'https://picsum.photos/600/400?random=8' },
+  { id: 'settings', link: '#', text: 'Settings', image: 'https://picsum.photos/600/400?random=9' },
+];
+
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [status, setStatus] = useState<any>({
     status: "offline",
     repo_loaded: false,
@@ -167,6 +184,14 @@ export default function App() {
             >
               Scan Workspace
             </button>
+            
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="p-2 text-slate-600 hover:text-sky-600 border border-slate-200 rounded-lg hover:bg-sky-50 transition-colors ml-2"
+              title="Open Navigation Menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
           </div>
         </header>
 
@@ -206,6 +231,30 @@ export default function App() {
           )}
         </div>
       </main>
+
+      {/* Flowing Menu Overlay Modal */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-50 bg-white flex flex-col justify-center items-center">
+          {/* Close button */}
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="absolute top-6 right-8 p-2.5 text-slate-600 hover:text-sky-600 border border-slate-200 rounded-lg hover:bg-sky-50 transition-colors z-50 bg-white"
+            title="Close Menu"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          
+          <div className="w-full h-full flex flex-col justify-center py-12">
+            <FlowingMenu 
+              items={flowingMenuItems} 
+              onSelect={(id) => {
+                setActiveTab(id as Tab);
+                setMenuOpen(false);
+              }} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
