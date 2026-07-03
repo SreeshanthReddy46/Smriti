@@ -34,7 +34,8 @@ export default function FlowingMenu({
   bgColor = '#ffffff',   // White background
   marqueeBgColor = '#0284c7', // Skyblue marquee background
   marqueeTextColor = '#ffffff', // White marquee text
-  borderColor = '#f1f5f9' // Slate border
+  borderColor = '#f1f5f9', // Slate border
+  onSelect
 }: FlowingMenuProps) {
   return (
     <div className="menu-wrap" style={{ backgroundColor: bgColor }}>
