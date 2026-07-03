@@ -1,0 +1,21 @@
+{
+  "name": "@smriti/ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist",
+    "test": "node --experimental-strip-types --test tests/intent-engine.test.ts"
+  },
+  "dependencies": {
+    "@smriti/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.5",
+    "typescript": "^5.2.2"
+  }
+}
