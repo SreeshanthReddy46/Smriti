@@ -166,7 +166,26 @@ Smriti is divided into 13 logical modules. Below is how each is implemented or s
 
 ---
 
-## ⚡ Setup & Installation Guide
+## 🔒 5. Security & Credentials Setup
+
+Smriti enforces a secure, offline-first execution boundary. Hardcoded credentials, developer tokens, or API keys **MUST NOT** be committed to the codebase.
+
+### 5.1 Pluggable LLM Providers
+Smriti does not store raw secrets in source configurations. You can configure active credentials in two ways:
+1. **Local Environment Variables**: Export key parameters in your shell session before running the daemon:
+   - `GEMINI_API_KEY` for Google Gemini models.
+   - `OPENAI_API_KEY` for OpenAI models.
+   - Local Ollama endpoints do not require API keys.
+2. **Dashboard Settings**: Save secrets in the Local Settings vault via the GUI Dashboard (`http://localhost:5173`). These are loaded in memory at runtime and are never committed to version control.
+
+### 5.2 Event Bus Privacy Guard (Credential Sweeping)
+The `SmritiEventBus` implements automatic sanitization filters for all payloads:
+- **API Key Masking**: Any string matching Google Gemini keys (`/AIzaSy[A-Za-z0-9_-]{30,40}/`) or OpenAI keys (`/sk-[a-zA-Z0-9-]{30,100}/`) is swept and replaced with `[MASKED_API_KEY]` before event dispatching.
+- **Workspace Path Isolation**: Absolute filesystem paths are automatically converted to `<WORKSPACE>/` relative syntax to prevent leaking developer folder structures across multi-agent logs.
+
+---
+
+## ⚡ 6. Setup & Installation Guide
 
 ### 1. System Requirements
 *   Python 3.9+ installed and added to your system `PATH`.
