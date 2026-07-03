@@ -48,11 +48,12 @@ export class AstChunker {
       const match = line.match(/^#+\s+(.+)/);
 
       if (match) {
-        if (blockLines.length > 0) {
+        if (blockLines.length > 0 && blockLines.join('\n').trim() !== '') {
           chunks.push({
             id: `${filePath}:markdown:${currentHeader}:${startLine}:${idx}`,
             filePath,
             type: 'general',
+            symbol: currentHeader,
             content: blockLines.join('\n'),
             startLine,
             endLine: idx,
@@ -67,11 +68,12 @@ export class AstChunker {
       }
     }
 
-    if (blockLines.length > 0) {
+    if (blockLines.length > 0 && blockLines.join('\n').trim() !== '') {
       chunks.push({
         id: `${filePath}:markdown:${currentHeader}:${startLine}:${lines.length}`,
         filePath,
         type: 'general',
+        symbol: currentHeader,
         content: blockLines.join('\n'),
         startLine,
         endLine: lines.length,

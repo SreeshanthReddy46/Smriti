@@ -17,7 +17,7 @@ export function parseTypeScript(filePath: string, content: string): CodeChunk[] 
     } else if ((ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node)) && node.name) {
       shouldExtract = true;
       type = 'function';
-      symbol = node.name.text;
+      symbol = ts.isIdentifier(node.name) ? node.name.text : node.name.getText(sourceFile);
     } else if (ts.isInterfaceDeclaration(node) && node.name) {
       shouldExtract = true;
       type = 'interface';

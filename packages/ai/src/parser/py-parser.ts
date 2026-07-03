@@ -39,6 +39,12 @@ export function parsePython(filePath: string, content: string): CodeChunk[] {
         scanIdx++;
       }
 
+      // Trim trailing empty lines
+      while (blockLines.length > 1 && blockLines[blockLines.length - 1].trim() === '') {
+        blockLines.pop();
+        scanIdx--;
+      }
+
       const blockContent = blockLines.join('\n');
       const endLine = scanIdx;
       
@@ -59,9 +65,6 @@ export function parsePython(filePath: string, content: string): CodeChunk[] {
           hasDocstring: hasDoc
         }
       });
-      
-      // Update line pointer so we don't duplicate nested triggers
-      idx = scanIdx - 1;
     }
   }
 
