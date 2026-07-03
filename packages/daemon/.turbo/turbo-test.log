@@ -1,0 +1,13 @@
+$ node --experimental-strip-types --test tests/daemon.test.ts
+▶ Smriti Background Daemon validations
+  ✔ Local Service Manager registers and runs workers (1.7041ms)
+  ✔ HTTP status control endpoint replies with health JSON (43.6958ms)
+✔ Smriti Background Daemon validations (56.0292ms)
+ℹ tests 2
+ℹ suites 1
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 307.1509

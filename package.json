@@ -1,0 +1,18 @@
+{
+  "name": "smriti-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smriti — Operating System for Project AI Context & Memory",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "packageManager": "pnpm@11.4.0"
+}

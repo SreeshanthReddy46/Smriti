@@ -1,0 +1,18 @@
+$ node --experimental-strip-types --test tests/event-bus.test.ts
+[EventBus Exception] file:modified failed: Failing Subscriber Mock
+▶ SmritiEventBus core verification
+  ✔ Type-safe publish and subscribe mechanics (8.2713ms)
+  ✔ Subscriber error isolation boundaries (2.1609ms)
+[EventBus Exception] file:deleted failed: Subscriber timed out after 100ms
+  ✔ Subscriber execution timeouts (116.127ms)
+  ✔ Privacy Mode credential sweeping & path masking (1.4155ms)
+  ✔ Deep freeze immutability contract (0.9868ms)
+✔ SmritiEventBus core verification (131.3554ms)
+ℹ tests 5
+ℹ suites 1
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5339.1309

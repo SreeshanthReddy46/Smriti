@@ -1,0 +1,18 @@
+$ node --experimental-strip-types --test tests/intent-engine.test.ts tests/ast-chunker.test.ts
+▶ Smriti AI AST Chunker verification
+  ✔ TypeScript parsing assertions (12.3087ms)
+  ✔ Python block indentation parsing assertions (1.2118ms)
+  ✔ Markdown header splits fallbacks (0.3962ms)
+✔ Smriti AI AST Chunker verification (15.9817ms)
+▶ Smriti AI Intent Engine verification
+  ✔ Rules-based direct matches (High Confidence) (4.563ms)
+  ✔ Conversational queries routing (Fallback mode) (92.9524ms)
+✔ Smriti AI Intent Engine verification (100.1998ms)
+ℹ tests 5
+ℹ suites 2
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2229.1719
